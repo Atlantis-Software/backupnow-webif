@@ -1,0 +1,64 @@
+<mat-card class="card" >
+    <mat-card-title>
+      <h3>Notifications</h3>
+    </mat-card-title>
+    <mat-card-content>
+        <h3>Recipients</h3>
+        <form [formGroup]="form" (ngSubmit)="addEmail()">
+            <div class="row">
+                <div class="col-md-3">
+                    <mat-form-field style="width: 100%;">
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="email" placeholder="user@domain.com">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-2">
+                    <button mat-flat-button color="primary" style="margin-left: 20px;">Add</button>
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col-md-12">
+                <mat-chip-list>
+                    <mat-chip *ngFor="let recipient of notif.recipients" [removable]="true" (removed)="remove(recipient)">
+                        {{ recipient }}
+                        <mat-icon matChipRemove>cancel</mat-icon>
+                    </mat-chip>
+                </mat-chip-list>
+            </div>
+        </div>
+        <h3>Daily summary</h3>
+        <div class="row">
+            <div class="col-md-3">
+                <mat-checkbox [(ngModel)]="notif.dailySum">Enable daily summary</mat-checkbox>
+            </div>
+            <div class="col-md-8" *ngIf="notif.dailySum">         
+                <mat-form-field style="margin-left: 20px;">
+                    <mat-label>at</mat-label>
+                    <input matInput [(ngModel)]="notif.time" type="time">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <h3>Notifications on</h3>
+        <div class="row">
+            <div class="col-md-3">
+                <mat-checkbox [(ngModel)]="notif.onCritical">Critical</mat-checkbox>
+            </div>
+            <div class="col-md-3">
+                <mat-checkbox [(ngModel)]="notif.onError">Error</mat-checkbox>
+            </div>
+            <div class="col-md-3">
+                <mat-checkbox [(ngModel)]="notif.onWarning">Warning</mat-checkbox>
+            </div>
+            <div class="col-md-3">
+                <mat-checkbox [(ngModel)]="notif.onSuccess">succes</mat-checkbox>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" style="text-align: right;">
+                <button mat-raised-button color="primary" (click)="save()">Save</button>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

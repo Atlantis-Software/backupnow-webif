@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-md-2" *ngIf="isLoggedIn()">
+    <mat-nav-list>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Overview
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <a mat-list-item [routerLink]="'/app/overview/dashboard'"> Dashboard </a>
+          <a mat-list-item [routerLink]="'/app/overview/warnings'"> Warnings </a>
+          <a mat-list-item [routerLink]="'/app/overview/activities'"> Activities </a>
+        </mat-expansion-panel>
+        <a mat-list-item [routerLink]="'/app/hosts'"> Hosts </a>
+        <a mat-list-item [routerLink]="'/app/plans'"> Plans </a>
+        <a mat-list-item [routerLink]="'/app/backups'"> Backups </a>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Parameters
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <a mat-list-item [routerLink]="'/app/parameters/notifications'"> Email notifications </a>
+          <a mat-list-item [routerLink]="'/app/parameters/smtp'"> Email server </a>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-nav-list>
+  </div>
+  <div [ngClass]="{'col-md-10': isLoggedIn(), 'col-md-12': !isLoggedIn()}">
+    <router-outlet></router-outlet>
+  </div>
+</div>

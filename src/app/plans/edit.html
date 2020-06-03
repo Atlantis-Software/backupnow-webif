@@ -1,0 +1,114 @@
+<h1 *ngIf="data.id" mat-dialog-title>Modify {{data.name}}</h1>
+<h1 *ngIf="!data.id" mat-dialog-title>Create a new plan</h1>
+<div mat-dialog-content style="height: 320px;">
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Name</mat-label>
+                    <input matInput [(ngModel)]="data.plan.name" placeholder="my plan name">
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Host</mat-label>
+                    <mat-select [(value)]="data.plan.host">
+                        <mat-option *ngFor="let host of data.hosts" [value]="host.id">{{host.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Backup</mat-label>
+                    <mat-select [(value)]="data.plan.backup">
+                        <mat-option *ngFor="let backup of data.backups" [value]="backup.id">{{backup.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Type</mat-label>
+                    <mat-select [(value)]="data.plan.type">
+                        <mat-option value="folder">Folder</mat-option>
+                        <mat-option value="mysql">Mysql</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="row" *ngIf="data.plan.type === 'folder'">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Folder</mat-label>
+                    <input matInput [(ngModel)]="data.plan.src" placeholder="/home">
+                </mat-form-field>
+            </div>
+            <div class="row" *ngIf="data.plan.type === 'mysql'">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Database</mat-label>
+                    <input matInput [(ngModel)]="data.plan.src" placeholder="my-db-name">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <mat-label>planning</mat-label>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-checkbox  [(ngModel)]="data.plan.mon" style="width: 100%;">Monday</mat-checkbox>
+                </div>
+                <div class="col-md-6">
+                    <mat-checkbox  [(ngModel)]="data.plan.tue" style="width: 100%;">Tuesday</mat-checkbox>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-checkbox  [(ngModel)]="data.plan.wed" style="width: 100%;">Wednesday</mat-checkbox>
+                </div>
+                <div class="col-md-6">
+                    <mat-checkbox  [(ngModel)]="data.plan.thu" style="width: 100%;">Thursday</mat-checkbox>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-checkbox  [(ngModel)]="data.plan.fri" style="width: 100%;">Friday</mat-checkbox>
+                </div>
+                <div class="col-md-6">
+                    <mat-checkbox  [(ngModel)]="data.plan.sat" style="width: 100%;">Saturday</mat-checkbox>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-checkbox  [(ngModel)]="data.plan.sun" style="width: 100%;">Sunday</mat-checkbox>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field>
+                        <mat-label>at</mat-label>
+                        <input matInput type="time" [(ngModel)]="data.plan.time">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field>
+                        <mat-label>Kept</mat-label>
+                        <input matInput [(ngModel)]="data.plan.keptCount" type="number">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field>
+                        <mat-select [(value)]="data.plan.keptPeriod">
+                            <mat-option value="d">Day</mat-option>
+                            <mat-option value="w">Week</mat-option>
+                            <mat-option value="m">Month</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>  
+        </div>
+    </div>
+
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="cancel()">Cancel</button>
+    <button mat-button [mat-dialog-close]="data.plan" cdkFocusInitial>Save</button>
+</div>

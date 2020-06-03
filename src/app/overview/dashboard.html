@@ -1,0 +1,103 @@
+<mat-card class="card">
+    <mat-card-title>
+      <h3>Dashboard</h3>
+    </mat-card-title>
+    <mat-card-content>
+      <div class="row">
+        <div class="col-md-6">
+          <mat-card class="card">
+            <mat-card-title>
+              <h3>Status</h3>
+            </mat-card-title>
+            <mat-card-content>
+              <canvas baseChart
+              [data]="statusData"
+              [labels]="statusLabels"
+              [chartType]="'pie'"
+              [options]="statusOptions"
+              [plugins]="statusPlugins"
+              [colors]="statusColors"
+              [legend]="true">
+              </canvas>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="col-md-6">
+          <mat-card class="card">
+            <mat-card-title>
+              <h3>Storage</h3>
+            </mat-card-title>
+            <mat-card-content>
+              <canvas baseChart
+              [data]="storageData"
+              [labels]="storageLabels"
+              [chartType]="'pie'"
+              [options]="storageOptions"
+              [plugins]="storagePlugins"
+              [colors]="storageColors"
+              [legend]="true">
+              </canvas>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <mat-card class="card">
+            <mat-card-title>
+              <h3>Activities</h3>
+            </mat-card-title>
+            <mat-card-content>
+              <canvas baseChart
+              [datasets]="activitiesData"
+              [labels]="activitiesLabels"
+              [options]="activitiesOptions"
+              [plugins]="activitiesPlugins"
+              [legend]="true"
+              [chartType]="'bar'">
+              </canvas>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="col-md-6">
+          <mat-card class="card">
+            <mat-card-title>
+              <h3>Warnings</h3>
+            </mat-card-title>
+            <mat-card-content>
+              <canvas baseChart
+              [datasets]="warningsData"
+              [labels]="warningsLabels"
+              [options]="warningsOptions"
+              [plugins]="warningsPlugins"
+              [legend]="true"
+              [chartType]="'bar'">
+              </canvas>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <mat-card class="card">
+            <mat-card-title>
+              <h3>Montly storage</h3>
+            </mat-card-title>
+            <mat-card-content>
+              <canvas baseChart
+              [datasets]="msData"
+              [labels]="msLabels"
+              [options]="msOptions"
+              [colors]="msColors"
+              [legend]="true"
+              [chartType]="'line'">
+              </canvas>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="col-md-6">
+          
+        </div>
+      </div>
+    </mat-card-content>
+</mat-card>
