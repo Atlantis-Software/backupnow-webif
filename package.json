@@ -1,6 +1,6 @@
 {
   "name": "@backupnow/webif",
-  "version": "0.0.1-beta.0",
+  "version": "0.0.1-beta.1",
   "description": "web interface for backup now",
   "main": "./index.js",
   "author": "Alexandre Tiertant",
